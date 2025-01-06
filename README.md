@@ -1,7 +1,5 @@
 # python-based-dlp-printer-controller
 
-<meta name="google-site-verification" content="ydtLIbzv6cXZLHar5lXp-Pm8VS19cEb_m-uQrmr1pcU" />
-
 This is a Python based application to control DLP printers. The application is tailored to the Gaharwar Laboratory customized DLP printer. Feel free to make changes to the code to tailor to your build.
 
 The application uses PyQt6 for the user interface, PySLM and Trimesh for slicing and image generation, and Pillow and OpenCV for image manipulation.
