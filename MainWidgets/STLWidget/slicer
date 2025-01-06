@@ -1,0 +1,41 @@
+def slice(self, layer_in, mesh_list_in):
+    mesh = trimesh.util.concatenate(mesh_list_in)
+
+    img = np.zeros((self.img_height, self.img_width, 3), np.uint8)
+
+    slice: trimesh.path.path.Path3D
+    slice = mesh.section(plane_origin=[0, 0, layer_in * self.layer_height * self.slice_tolerance * 10 ** -3],
+                         plane_normal=[0, 0, 1])
+
+    slice.apply_translation(self.center)
+
+    entities: np.ndarray
+    entities = slice.entities
+
+    entity: trimesh.path.entities.Line
+    for entity in entities:
+        discrete = entity.discrete(slice.vertices)
+
+        discrete /= self.um_per_px * 10 ** -3
+
+        for i in range(len(discrete) - 1):
+            # Get an individual line
+            start = tuple(discrete[i].astype(int))[0:2]  # Slicing to exclude z component
+            end = tuple(discrete[i + 1].astype(int))[0:2]
+
+            # Plot line
+            img = cv2.line(img, start, end, self.line_color, self.line_width)
+
+    # FIND CONTOURS
+    imggray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    ret, thresh = cv2.threshold(imggray, 127, 255, 0)
+
+    contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+    # FILL CONTOURS
+    cv2.drawContours(img, contours[:], 0, (255, 255, 255), -1)
+
+    cv2.imwrite("test.png", img)
+
+    return img
