@@ -7,3 +7,5 @@ The application uses PyQt6 for the user interface, PySLM and Trimesh for slicing
 I plan to update this Read Me and create a YouTube playlist showcasing how to build a DLP printer and how to use this code for printing.
 
 I appreciate any help in correcting and optimizing any code I have already written.
+
+<meta name="google-site-verification" content="ydtLIbzv6cXZLHar5lXp-Pm8VS19cEb_m-uQrmr1pcU" />
