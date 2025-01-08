@@ -8,3 +8,5 @@ I plan to update this Read Me and create a YouTube playlist showcasing how to bu
 
 I appreciate any help in correcting and optimizing any code I have already written.
 
+The Python 3.13 recommended. A requirements.txt file is provided to show the requirements needed using pip and a virtual environment.
+
