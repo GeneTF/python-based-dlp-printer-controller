@@ -1,0 +1,7 @@
+pip install pyqt6
+pip install PyQtDarkTheme-fork
+pip install pyserial
+pip install trimesh
+pip install opencv-python
+pip install pillow
+pip install PythonSLM
